@@ -67,3 +67,17 @@ WARNING - 2016-02-01 07:50:42 --> Fuel\Core\Fuel::init - The configured locale e
 WARNING - 2016-02-01 07:52:47 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2016-02-01 07:52:48 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2016-02-01 07:52:48 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2016-02-01 08:10:49 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2016-02-01 08:10:56 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2016-02-01 08:10:58 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2016-02-01 08:11:07 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2016-02-01 08:11:10 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2016-02-01 08:11:17 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2016-02-01 08:11:19 --> Fatal Error - Class 'Twig_Autoloader' not found in C:\xampp\htdocs\restaurant-pos-backend\fuel\packages\parser\classes\view\twig.php on line 31
+WARNING - 2016-02-01 08:15:45 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2016-02-01 08:15:47 --> Fatal Error - Class 'Twig_Autoloader' not found in C:\xampp\htdocs\restaurant-pos-backend\fuel\packages\parser\classes\view\twig.php on line 31
+WARNING - 2016-02-01 08:21:24 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2016-02-01 08:22:15 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2016-02-01 08:25:41 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2016-02-01 08:28:15 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2016-02-01 08:28:44 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
