@@ -65,7 +65,7 @@
                     </li>
                     
                     <li class="dropdown" class="<?php echo in_array($segment, array('users', 'user')) ? 'active' : ''; ?>">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-user"></span> Users <b class="caret"></b></a>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-user"></span> System Users <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><?php echo Fuel\Core\Html::anchor('admin/users', 'Users'); ?></li>
                             <li><?php echo Fuel\Core\Html::anchor('admin/user/types', 'User Types'); ?></li>
