@@ -179,6 +179,7 @@ return array(
 			'Fuel\\Core\\View',
 			'Fuel\\Core\\ViewModel',
 			'Closure',
+			'Fuel\\Core\\Pagination'
 		),
 	),
 
@@ -308,5 +309,13 @@ return array(
 		 */
 		// 'language'  => array(),
 	),
-
+	
+	'pagination' => array(
+		'per_page' => 1,
+		'num_links' => 10,
+		'uri_segment' => 'page',
+		'pagination_url' => null, // let Fuel try to detect it automatically
+		'show_first' => true,
+		'show_last' => true,
+	)
 );

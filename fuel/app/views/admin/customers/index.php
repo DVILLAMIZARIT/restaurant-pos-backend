@@ -1,6 +1,9 @@
-<h2>Listing Customers</h2>
-<br>
+<p>
+	<?php echo Html::anchor('admin/customers/create', 'New Customer', array('class' => 'btn btn-success')); ?>
+</p>
+
 <?php if ($customers): ?>
+<?php echo $pagination->render(); ?>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -16,7 +19,7 @@
 
 			<td><?php echo $item->description; ?></td>
 			<td><?php echo $item->contact_person; ?></td>
-			<td><?php echo $item->phone; ?></td>
+			<td><?php echo Num::format_phone($item->phone); ?></td>
 			<td><?php echo $item->email; ?></td>
 			<td>
 				<?php echo Html::anchor('admin/customers/view/'.$item->id, 'View'); ?> |
@@ -25,13 +28,12 @@
 
 			</td>
 		</tr>
-<?php endforeach; ?>	</tbody>
+<?php endforeach; ?>	
+</tbody>
 </table>
 
 <?php else: ?>
 <p>No Customers.</p>
 
-<?php endif; ?><p>
-	<?php echo Html::anchor('admin/customers/create', 'Add new Customer', array('class' => 'btn btn-success')); ?>
-
-</p>
+<?php endif; ?>
+<p></p>

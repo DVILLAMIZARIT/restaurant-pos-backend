@@ -27,6 +27,15 @@
 		</div>
 		<div class="form-group">
 			<label class='control-label'>&nbsp;</label>
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>		</div>
+			<?php 
+				echo Html::anchor('admin/customers', '&laquo; Customers', array('class' => 'btn btn-default'));
+			?> 
+			<?php
+				echo isset($customer) ? Html::anchor('admin/customers/view/'.$customer->id, 'View', array('class' => 'btn btn-warning')) : '';
+			?> 
+			<?php
+				echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); 
+			?>		
+		</div>
 	</fieldset>
 <?php echo Form::close(); ?>

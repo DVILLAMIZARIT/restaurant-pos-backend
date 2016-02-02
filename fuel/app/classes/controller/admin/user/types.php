@@ -4,8 +4,20 @@ class Controller_Admin_User_Types extends Controller_Admin
 
 	public function action_index()
 	{
-		$data['user_types'] = Model_User_Type::find('all');
-		$this->template->title = "User_types";
+                $config = \Fuel\Core\Config::get('pagination');
+                $pagination = \Fuel\Core\Pagination::forge('user_types', $config);
+                $pagination->total_items = Model_User_Type::count();
+                $data['pagination'] = $pagination;
+                
+		$data['user_types'] = Model_User_Type::find('all', array(
+                    'order_by' => array(
+                        array('name', 'asc')
+                    ),
+                    'offset' => $pagination->offset,
+                    'limit' => $pagination->per_page,
+                ));
+                
+		$this->template->title = "User Types";
 		$this->template->content = View::forge('admin/user/types/index', $data);
 
 	}

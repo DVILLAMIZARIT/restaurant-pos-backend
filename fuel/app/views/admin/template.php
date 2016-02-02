@@ -106,8 +106,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1><?php echo $title; ?></h1>
+                <h3><?php echo $title; ?></h3>
                 <hr>
+            </div>
+            <div class="col-md-8">                
                 <?php if (Session::get_flash('success')): ?>
                         <div class="alert alert-success alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -125,6 +127,7 @@
                         </div>
                 <?php endif; ?>
             </div>
+            <div class="col-md-4"></div>
             <div class="col-md-12">
                 <?php echo $content; ?>
             </div>

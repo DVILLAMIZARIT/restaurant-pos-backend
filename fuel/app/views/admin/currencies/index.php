@@ -18,7 +18,7 @@
 			<td><?php echo $item->country; ?></td>
 			<td><?php echo $item->is_default; ?></td>
 			<td><?php echo $item->exchange_rate; ?></td>
-			<td>
+			<td nowrap>
 				<?php echo Html::anchor('admin/currencies/view/'.$item->id, 'View'); ?> |
 				<?php echo Html::anchor('admin/currencies/edit/'.$item->id, 'Edit'); ?> |
 				<?php echo Html::anchor('admin/currencies/delete/'.$item->id, 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>

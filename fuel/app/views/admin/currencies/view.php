@@ -16,5 +16,7 @@
 	<strong>Exchange rate:</strong>
 	<?php echo $currency->exchange_rate; ?></p>
 
-<?php echo Html::anchor('admin/currencies/edit/'.$currency->id, 'Edit'); ?> |
-<?php echo Html::anchor('admin/currencies', 'Back'); ?>
+<p>
+	<?php echo Html::anchor('admin/currencies', 'Back', array('class' => 'btn btn-default')); ?>
+	<?php echo Html::anchor('admin/currencies/edit/'.$currency->id, 'Edit', array('class' => 'btn btn-primary')); ?> 
+</p>

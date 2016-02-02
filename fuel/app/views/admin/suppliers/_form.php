@@ -27,6 +27,9 @@
 		</div>
 		<div class="form-group">
 			<label class='control-label'>&nbsp;</label>
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>		</div>
+                        <?php echo Fuel\Core\Html::anchor('admin/suppliers', '&laquo; Suppliers', array('class' => 'btn btn-default')); ?>
+                        <?php echo isset($supplier) ? Fuel\Core\Html::anchor('admin/suppliers/view/'.$supplier->id, 'View', array('class' => 'btn btn-warning')) : ''; ?> 
+			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>	
+                </div>
 	</fieldset>
 <?php echo Form::close(); ?>

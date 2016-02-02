@@ -1,7 +1,4 @@
-<h2>New Customer</h2>
-<br>
-
-<?php echo render('admin/customers/_form'); ?>
-
-
-<p><?php echo Html::anchor('admin/customers', 'Back'); ?></p>
+<div class="col-md-6">
+    <?php echo render('admin/suppliers/_form'); ?>
+</div>
+<div class="col-md-6"></div>

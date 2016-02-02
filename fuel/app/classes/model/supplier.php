@@ -26,9 +26,9 @@ class Model_Supplier extends \Orm\Model
 	{
 		$val = Validation::forge($factory);
 		$val->add_field('description', 'Description', 'required|max_length[255]');
-		$val->add_field('contact_person', 'Contact Person', 'required|max_length[255]');
-		$val->add_field('phone', 'Phone', 'required|max_length[255]');
-		$val->add_field('email', 'Email', 'required|valid_email|max_length[255]');
+		$val->add_field('contact_person', 'Contact Person', 'max_length[255]');
+		$val->add_field('phone', 'Phone', 'max_length[255]');
+		$val->add_field('email', 'Email', 'valid_email|max_length[255]');
 
 		return $val;
 	}
