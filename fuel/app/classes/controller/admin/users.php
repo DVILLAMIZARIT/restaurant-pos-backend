@@ -4,7 +4,19 @@ class Controller_Admin_Users extends Controller_Admin
 
 	public function action_index()
 	{
-		$data['users'] = Model_User::find('all');
+                $config = \Fuel\Core\Config::get('pagination');
+                $pagination = \Fuel\Core\Pagination::forge('admin.users', $config);
+                $pagination->total_items = Model_User::count();
+                
+                $data['pagination'] = $pagination;
+		$data['users'] = Model_User::find('all', array(
+                    'order_by' => array(
+                        array('description', 'asc')
+                    ),
+                    'limit' => $pagination->per_page,
+                    'offset' => $pagination->offset,
+                ));
+                
 		$this->template->title = "Users";
 		$this->template->content = View::forge('admin/users/index', $data);
 
@@ -12,10 +24,18 @@ class Controller_Admin_Users extends Controller_Admin
 
 	public function action_view($id = null)
 	{
-		$data['user'] = Model_User::find($id);
-
-		$this->template->title = "User";
-		$this->template->content = View::forge('admin/users/view', $data);
+		if ($user = Model_User::find($id))
+                {
+                    $this->template->title = "User";
+                    $this->template->content = View::forge('admin/users/view', array(
+                        'user' => $user,
+                    ));
+                }
+                else
+                {
+                    Fuel\Core\Session::set_flash('error', 'Cannot find the selected user');
+                    Fuel\Core\Response::redirect_back('admin/users');
+                }
 
 	}
 

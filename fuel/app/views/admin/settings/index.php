@@ -1,6 +1,9 @@
-<h2>Listing Settings</h2>
-<br>
+<p>
+    <?php echo Html::anchor('admin/settings/create', 'New Setting', array('class' => 'btn btn-success')); ?>
+</p>
+
 <?php if ($settings): ?>
+<?php echo $pagination->render(); ?>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -17,7 +20,7 @@
 			<td><?php echo $item->setting_key; ?></td>
 			<td><?php echo $item->setting_title; ?></td>
 			<td><?php echo $item->setting_value; ?></td>
-			<td><?php echo $item->setting_data_type; ?></td>
+			<td><?php echo $item->get_data_type()->name; ?></td>
 			<td>
 				<?php echo Html::anchor('admin/settings/view/'.$item->id, 'View'); ?> |
 				<?php echo Html::anchor('admin/settings/edit/'.$item->id, 'Edit'); ?> |
@@ -31,7 +34,5 @@
 <?php else: ?>
 <p>No Settings.</p>
 
-<?php endif; ?><p>
-	<?php echo Html::anchor('admin/settings/create', 'Add new Setting', array('class' => 'btn btn-success')); ?>
+<?php endif; ?>
 
-</p>

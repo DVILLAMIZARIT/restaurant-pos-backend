@@ -1,7 +1,4 @@
-<h2>New Inventory_unit</h2>
-<br>
-
-<?php echo render('admin/inventory/units/_form'); ?>
-
-
-<p><?php echo Html::anchor('admin/inventory/units', 'Back'); ?></p>
+<div class="col-md-6">
+    <?php echo render('admin/inventory/units/_form'); ?>
+</div>
+<div class="col-md-6"></div>

@@ -24,6 +24,7 @@ return array (
         15 => '016_create_product_subcategory_lookups',
         16 => '017_create_product_supplier_lookups',
         17 => '018_create_countries',
+        18 => '019_create_setting_data_types',
       ),
     ),
     'module' => 

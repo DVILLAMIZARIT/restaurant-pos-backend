@@ -9,6 +9,9 @@
 		</div>
 		<div class="form-group">
 			<label class='control-label'>&nbsp;</label>
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>		</div>
+                        <?php echo \Fuel\Core\Html::anchor('admin/inventory/units', '&laquo; Inventory Units', array('class' => 'btn btn-default')); ?>
+                        <?php echo isset($inventory_unit) ? \Fuel\Core\Html::anchor('admin/inventory/units/view/'.$inventory_unit->id, 'View', array('class' => 'btn btn-warning')) : ''; ?>
+			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>		
+                </div>
 	</fieldset>
 <?php echo Form::close(); ?>

@@ -9,7 +9,7 @@
 			<th>Short code</th>
 			<th>Inventory units id</th>
 			<th>Warning level</th>
-			<th></th>
+                        <th style="width: 150px;"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,7 +20,7 @@
 			<td><?php echo $item->short_code; ?></td>
 			<td><?php echo $item->inventory_units_id; ?></td>
 			<td><?php echo $item->warning_level; ?></td>
-			<td>
+			<td nowrap>
 				<?php echo Html::anchor('admin/inventory/view/'.$item->id, 'View'); ?> |
 				<?php echo Html::anchor('admin/inventory/edit/'.$item->id, 'Edit'); ?> |
 				<?php echo Html::anchor('admin/inventory/delete/'.$item->id, 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>

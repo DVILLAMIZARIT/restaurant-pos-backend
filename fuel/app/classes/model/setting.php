@@ -6,7 +6,7 @@ class Model_Setting extends \Orm\Model
 		'setting_key',
 		'setting_title',
 		'setting_value',
-		'setting_data_type',
+		'setting_data_type_id',
 		'created_at',
 		'updated_at',
 	);
@@ -21,16 +21,26 @@ class Model_Setting extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
+        
+        protected static $_belongs_to = array(
+            'data_type' => array(
+                'model_to' => 'Model_Setting_Data_Type',
+                'key_from' => 'setting_data_type_id',
+            )
+        );
 
-	public static function validate($factory)
+        public static function validate($factory)
 	{
 		$val = Validation::forge($factory);
 		$val->add_field('setting_key', 'Setting Key', 'required|max_length[255]');
 		$val->add_field('setting_title', 'Setting Title', 'required|max_length[255]');
-		$val->add_field('setting_value', 'Setting Value', 'required');
-		$val->add_field('setting_data_type', 'Setting Data Type', 'required|max_length[255]');
+		$val->add_field('setting_data_type_id', 'Setting Data Type', 'required|valid_string[numeric]');
 
 		return $val;
 	}
-
+        
+        public function get_data_type()
+        {
+            return !is_null($this->data_type) ? $this->data_type : Model_Setting_Data_Type::forge(array('id' => 0));
+        }
 }

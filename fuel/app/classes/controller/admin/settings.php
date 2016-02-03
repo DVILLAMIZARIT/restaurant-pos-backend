@@ -4,19 +4,45 @@ class Controller_Admin_Settings extends Controller_Admin
 
 	public function action_index()
 	{
-		$data['settings'] = Model_Setting::find('all');
+                $config = \Fuel\Core\Config::get('pagination');
+                $pagination = \Fuel\Core\Pagination::forge('settings', $config);
+                $pagination->total_items = Model_Setting::count();
+                
+		$settings = Model_Setting::find('all', array(
+                    'order_by' => array(
+                        array('setting_title', 'asc')
+                    ),
+                    'limit' => $pagination->per_page,
+                    'offset' => $pagination->offset,
+                ));
+                
+                $data_types = Model_Setting_Data_Type::find('all', array(
+                    'order_by' => array(
+                        array('name', 'asc')
+                    )
+                ));
+                
 		$this->template->title = "Settings";
-		$this->template->content = View::forge('admin/settings/index', $data);
+		$this->template->content = View::forge('admin/settings/index', array(
+                    'pagination' => $pagination,
+                    'settings' => $settings,
+                    'data_types' => $data_types,
+                ));
 
 	}
 
 	public function action_view($id = null)
 	{
-		$data['setting'] = Model_Setting::find($id);
-
-		$this->template->title = "Setting";
-		$this->template->content = View::forge('admin/settings/view', $data);
-
+		if ($setting = Model_Setting::find($id))
+                {
+                    $this->template->title = "Setting";
+                    $this->template->content = View::forge('admin/settings/view', array('setting' => $setting));
+                }
+                else
+                {
+                    Fuel\Core\Session::set_flash('error', 'Cannot find the specified setting');
+                    Fuel\Core\Response::redirect('admin/settings');
+                }
 	}
 
 	public function action_create()
@@ -31,14 +57,14 @@ class Controller_Admin_Settings extends Controller_Admin
 					'setting_key' => Input::post('setting_key'),
 					'setting_title' => Input::post('setting_title'),
 					'setting_value' => Input::post('setting_value'),
-					'setting_data_type' => Input::post('setting_data_type'),
+					'setting_data_type_id' => Input::post('setting_data_type_id'),
 				));
 
 				if ($setting and $setting->save())
 				{
 					Session::set_flash('success', e('Added setting #'.$setting->id.'.'));
 
-					Response::redirect('admin/settings');
+					Response::redirect('admin/settings/view/'.$setting->id);
 				}
 
 				else
@@ -52,6 +78,12 @@ class Controller_Admin_Settings extends Controller_Admin
 			}
 		}
 
+                $this->template->set_global('data_types', Model_Setting_Data_Type::find('all', array(
+                    'order_by' => array(
+                        array('name', 'asc')
+                    )
+                )));
+                
 		$this->template->title = "Settings";
 		$this->template->content = View::forge('admin/settings/create');
 
@@ -67,13 +99,13 @@ class Controller_Admin_Settings extends Controller_Admin
 			$setting->setting_key = Input::post('setting_key');
 			$setting->setting_title = Input::post('setting_title');
 			$setting->setting_value = Input::post('setting_value');
-			$setting->setting_data_type = Input::post('setting_data_type');
+			$setting->setting_data_type_id = Input::post('setting_data_type_id');
 
 			if ($setting->save())
 			{
 				Session::set_flash('success', e('Updated setting #' . $id));
 
-				Response::redirect('admin/settings');
+				Response::redirect('admin/settings/view/'.$setting->id);
 			}
 
 			else
@@ -89,7 +121,7 @@ class Controller_Admin_Settings extends Controller_Admin
 				$setting->setting_key = $val->validated('setting_key');
 				$setting->setting_title = $val->validated('setting_title');
 				$setting->setting_value = $val->validated('setting_value');
-				$setting->setting_data_type = $val->validated('setting_data_type');
+				$setting->setting_data_type_id = $val->validated('setting_data_type_id');
 
 				Session::set_flash('error', $val->error());
 			}
@@ -97,6 +129,12 @@ class Controller_Admin_Settings extends Controller_Admin
 			$this->template->set_global('setting', $setting, false);
 		}
 
+                $this->template->set_global('data_types', Model_Setting_Data_Type::find('all', array(
+                    'order_by' => array(
+                        array('name', 'asc')
+                    )
+                )));
+                
 		$this->template->title = "Settings";
 		$this->template->content = View::forge('admin/settings/edit');
 

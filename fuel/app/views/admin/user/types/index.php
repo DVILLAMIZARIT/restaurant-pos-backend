@@ -8,7 +8,7 @@
 		<tr>
 			<th>Name</th>
 			<th>Group</th>
-			<th></th>
+                        <th style="width: 150px;"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -17,8 +17,8 @@
 			<td><?php echo $item->name; ?></td>
 			<td><?php echo $item->group; ?></td>
 			<td nowrap>
-                            <?php echo Html::anchor('admin/user/types/view/'.$item->id, 'View'); ?> 
-                            <?php echo Html::anchor('admin/user/types/edit/'.$item->id, 'Edit'); ?> 
+                            <?php echo Html::anchor('admin/user/types/view/'.$item->id, 'View'); ?> | 
+                            <?php echo Html::anchor('admin/user/types/edit/'.$item->id, 'Edit'); ?> | 
                             <?php echo Html::anchor('admin/user/types/delete/'.$item->id, 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>
 			</td>
 		</tr>

@@ -1,4 +1,3 @@
-<div class="col-md-8">
 <?php echo Form::open(array("class"=>"form-horizontal")); ?>
     <fieldset>
         <div class="form-group">
@@ -49,6 +48,3 @@
         </div>
     </fieldset>
 <?php echo Form::close(); ?>
-</div>
-
-<div class="col-md-4"></div>

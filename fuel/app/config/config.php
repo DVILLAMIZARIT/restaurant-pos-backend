@@ -311,7 +311,7 @@ return array(
 	),
 	
 	'pagination' => array(
-		'per_page' => 1,
+		'per_page' => 10,
 		'num_links' => 10,
 		'uri_segment' => 'page',
 		'pagination_url' => null, // let Fuel try to detect it automatically

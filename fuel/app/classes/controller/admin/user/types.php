@@ -24,10 +24,18 @@ class Controller_Admin_User_Types extends Controller_Admin
 
 	public function action_view($id = null)
 	{
-		$data['user_type'] = Model_User_Type::find($id);
-
-		$this->template->title = "User_type";
-		$this->template->content = View::forge('admin/user/types/view', $data);
+		if ($user_type = Model_User_Type::find($id))
+                {
+                    $this->template->title = "User Type &raquo; ".$user_type->name;
+                    $this->template->content = View::forge('admin/user/types/view', array(
+                        'user_type' => $user_type
+                    ));
+                }
+                else
+                {
+                    Fuel\Core\Session::set_flash('error', 'Cannot find the selected item');
+                    Fuel\Core\Response::redirect_back('admin/user/types');
+                }
 
 	}
 
@@ -48,7 +56,7 @@ class Controller_Admin_User_Types extends Controller_Admin
 				{
 					Session::set_flash('success', e('Added user_type #'.$user_type->id.'.'));
 
-					Response::redirect('admin/user/types');
+					Response::redirect('admin/user/types/view/'.$user_type->id);
 				}
 
 				else
@@ -62,49 +70,58 @@ class Controller_Admin_User_Types extends Controller_Admin
 			}
 		}
 
-		$this->template->title = "User_Types";
+                $this->template->set_global('groups', $this->get_groups());
+		$this->template->title = "User Types &raquo; Create";
 		$this->template->content = View::forge('admin/user/types/create');
 
 	}
 
 	public function action_edit($id = null)
 	{
-		$user_type = Model_User_Type::find($id);
-		$val = Model_User_Type::validate('edit');
+		if ($user_type = Model_User_Type::find($id))
+                {
+                    $val = Model_User_Type::validate('edit');
 
-		if ($val->run())
-		{
-			$user_type->name = Input::post('name');
-			$user_type->group = Input::post('group');
+                    if ($val->run())
+                    {
+                            $user_type->name = Input::post('name');
+                            $user_type->group = Input::post('group');
 
-			if ($user_type->save())
-			{
-				Session::set_flash('success', e('Updated user_type #' . $id));
+                            if ($user_type->save())
+                            {
+                                    Session::set_flash('success', e('Updated user_type #' . $id));
 
-				Response::redirect('admin/user/types');
-			}
+                                    Response::redirect('admin/user/types/view/'.$user_type->id);
+                            }
 
-			else
-			{
-				Session::set_flash('error', e('Could not update user_type #' . $id));
-			}
-		}
+                            else
+                            {
+                                    Session::set_flash('error', e('Could not update user_type #' . $id));
+                            }
+                    }
 
-		else
-		{
-			if (Input::method() == 'POST')
-			{
-				$user_type->name = $val->validated('name');
-				$user_type->group = $val->validated('group');
+                    else
+                    {
+                            if (Input::method() == 'POST')
+                            {
+                                    $user_type->name = $val->validated('name');
+                                    $user_type->group = $val->validated('group');
 
-				Session::set_flash('error', $val->error());
-			}
+                                    Session::set_flash('error', $val->error());
+                            }
 
-			$this->template->set_global('user_type', $user_type, false);
-		}
+                            $this->template->set_global('user_type', $user_type, false);
+                    }
 
-		$this->template->title = "User_types";
-		$this->template->content = View::forge('admin/user/types/edit');
+                    $this->template->set_global('groups', $this->get_groups());
+                    $this->template->title = "User Types &raquo; ".$user_type->name." &raquo; Edit";
+                    $this->template->content = View::forge('admin/user/types/edit');
+                }
+                else
+                {
+                    Fuel\Core\Session::set_flash('error', 'Cannot find the selected item');
+                    Fuel\Core\Response::redirect('admin/user/types');
+                }
 
 	}
 

@@ -10,7 +10,7 @@
 			<th>Contact person</th>
 			<th>Phone</th>
 			<th>Email</th>
-			<th></th>
+                        <th style="width: 150px;"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -24,7 +24,6 @@
 				<?php echo Html::anchor('admin/suppliers/view/'.$item->id, 'View'); ?> |
 				<?php echo Html::anchor('admin/suppliers/edit/'.$item->id, 'Edit'); ?> |
 				<?php echo Html::anchor('admin/suppliers/delete/'.$item->id, 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>
-
 			</td>
 		</tr>
 <?php endforeach; ?>	</tbody>
