@@ -1,4 +1,4 @@
-<div class="col-md-8">
+<div class="col-md-6">
 <h4 align="center"><?php echo $inventory_unit->name; ?></h4>
 
 <p>
@@ -12,4 +12,4 @@
 </p>
 
 </div>
-<div class="col-md-4"></div>
+<div class="col-md-6"></div>

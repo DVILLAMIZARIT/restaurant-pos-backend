@@ -9,7 +9,7 @@
 		</div>
             
                 <div class="form-group">
-                    <?php echo Form::label('Group', 'group', array('class'=>'control-label')); ?>
+                    <?php echo Form::label('System Login Rights', 'group', array('class'=>'control-label')); ?>
                     <select name="group" class="form-control" required>
                         <option value="" selected>- - SELECT - -</option>
                         <?php foreach ($groups as $key => $name): ?>

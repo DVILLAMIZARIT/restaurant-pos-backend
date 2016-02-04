@@ -2,6 +2,17 @@
 
 	<fieldset>
 		<div class="form-group">
+			<?php echo Form::label('Full Name', 'description', array('class'=>'control-label')); ?>
+
+				<?php echo Form::input('description', Input::post('description', isset($user) ? $user->description : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Description')); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('System Login Rights', 'group', array('class'=>'control-label')); ?>
+
+                        <?php echo \Fuel\Core\Form::select('group',  Input::post('group', isset($user) ? $user->group : 0), $groups, array('class' => 'form-control')); ?>
+		</div>
+		<div class="form-group">
 			<?php echo Form::label('Username', 'username', array('class'=>'control-label')); ?>
 
 				<?php echo Form::input('username', Input::post('username', isset($user) ? $user->username : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Username')); ?>
@@ -10,55 +21,13 @@
 		<div class="form-group">
 			<?php echo Form::label('Password', 'password', array('class'=>'control-label')); ?>
 
-				<?php echo Form::input('password', Input::post('password', isset($user) ? $user->password : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Password')); ?>
+				<?php echo Form::input('password', '', array('class' => 'col-md-4 form-control', 'placeholder'=>'Leave blank to keep existing password')); ?>
 
 		</div>
 		<div class="form-group">
 			<?php echo Form::label('Email', 'email', array('class'=>'control-label')); ?>
 
 				<?php echo Form::input('email', Input::post('email', isset($user) ? $user->email : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Email')); ?>
-
-		</div>
-		<div class="form-group">
-			<?php echo Form::label('Last login', 'last_login', array('class'=>'control-label')); ?>
-
-				<?php echo Form::input('last_login', Input::post('last_login', isset($user) ? $user->last_login : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Last login')); ?>
-
-		</div>
-		<div class="form-group">
-			<?php echo Form::label('Login hash', 'login_hash', array('class'=>'control-label')); ?>
-
-				<?php echo Form::input('login_hash', Input::post('login_hash', isset($user) ? $user->login_hash : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Login hash')); ?>
-
-		</div>
-		<div class="form-group">
-			<?php echo Form::label('Group', 'group', array('class'=>'control-label')); ?>
-
-				<?php echo Form::input('group', Input::post('group', isset($user) ? $user->group : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Group')); ?>
-
-		</div>
-		<div class="form-group">
-			<?php echo Form::label('Profile fields', 'profile_fields', array('class'=>'control-label')); ?>
-
-				<?php echo Form::textarea('profile_fields', Input::post('profile_fields', isset($user) ? $user->profile_fields : ''), array('class' => 'col-md-8 form-control', 'rows' => 8, 'placeholder'=>'Profile fields')); ?>
-
-		</div>
-		<div class="form-group">
-			<?php echo Form::label('Guid', 'guid', array('class'=>'control-label')); ?>
-
-				<?php echo Form::input('guid', Input::post('guid', isset($user) ? $user->guid : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Guid')); ?>
-
-		</div>
-		<div class="form-group">
-			<?php echo Form::label('Shop guid', 'shop_guid', array('class'=>'control-label')); ?>
-
-				<?php echo Form::input('shop_guid', Input::post('shop_guid', isset($user) ? $user->shop_guid : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Shop guid')); ?>
-
-		</div>
-		<div class="form-group">
-			<?php echo Form::label('Description', 'description', array('class'=>'control-label')); ?>
-
-				<?php echo Form::input('description', Input::post('description', isset($user) ? $user->description : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Description')); ?>
 
 		</div>
 		<div class="form-group">
@@ -80,17 +49,17 @@
 
 		</div>
 		<div class="form-group">
-			<?php echo Form::label('User type id', 'user_type_id', array('class'=>'control-label')); ?>
+			<?php echo Form::label('Employee Type', 'user_type_id', array('class'=>'control-label')); ?>
 
-				<?php echo Form::input('user_type_id', Input::post('user_type_id', isset($user) ? $user->user_type_id : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'User type id')); ?>
+                    <select name="user_type_id" class="form-control" required="">
+                        <option value="">- - SELECT - -</option>
+                        <?php foreach ($user_types as $type): ?>
+                        <option value="<?php echo $type->id; ?>" <?php echo Input::post('user_type_id', isset($user) ? $user->user_type_id : '') == $type->id ? ' selected ' : ''; ?>><?php echo $type->name; ?></option>
+                        <?php endforeach; ?>
+                    </select>
 
 		</div>
-		<div class="form-group">
-			<?php echo Form::label('Access options', 'access_options', array('class'=>'control-label')); ?>
-
-				<?php echo Form::textarea('access_options', Input::post('access_options', isset($user) ? $user->access_options : ''), array('class' => 'col-md-8 form-control', 'rows' => 8, 'placeholder'=>'Access options')); ?>
-
-		</div>
+            <!--provide access options as check boxes--> 
 		<div class="form-group">
 			<?php echo Form::label('Phone', 'phone', array('class'=>'control-label')); ?>
 
@@ -99,6 +68,9 @@
 		</div>
 		<div class="form-group">
 			<label class='control-label'>&nbsp;</label>
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>		</div>
+                        <?php echo Fuel\Core\Html::anchor('admin/users', '&laquo; Users', array('class' => 'btn btn-default')); ?>
+                        <?php echo isset($user) ? Fuel\Core\Html::anchor('admin/users/view/'.$user->id, 'View', array('class' => 'btn btn-warning')) : ''; ?>
+			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>		
+                </div>
 	</fieldset>
 <?php echo Form::close(); ?>

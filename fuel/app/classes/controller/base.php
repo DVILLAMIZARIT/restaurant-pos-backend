@@ -24,10 +24,9 @@ class Controller_Base extends Controller_Template
         protected function get_groups()
         {
             return array(
-                '100' => 'Administators',
-                '50' => 'Supervisors',
-                '30' => 'Cashiers',
-                '20' => 'Kitchen Staff',
+                '100' => 'System Administrator',
+                '50' => 'Manager',
+                '30' => 'User',
             );
         }
         

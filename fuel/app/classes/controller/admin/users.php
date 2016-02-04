@@ -49,14 +49,14 @@ class Controller_Admin_Users extends Controller_Admin
 			{
 				$user = Model_User::forge(array(
 					'username' => Input::post('username'),
-					'password' => Input::post('password'),
+//					'password' => Input::post('password'),
 					'email' => Input::post('email'),
-					'last_login' => Input::post('last_login'),
-					'login_hash' => Input::post('login_hash'),
+//					'last_login' => Input::post('last_login'),
+//					'login_hash' => Input::post('login_hash'),
 					'group' => Input::post('group'),
-					'profile_fields' => Input::post('profile_fields'),
-					'guid' => Input::post('guid'),
-					'shop_guid' => Input::post('shop_guid'),
+//					'profile_fields' => Input::post('profile_fields'),
+//					'guid' => Input::post('guid'),
+//					'shop_guid' => Input::post('shop_guid'),
 					'description' => Input::post('description'),
 					'id_number' => Input::post('id_number'),
 					'employee_number' => Input::post('employee_number'),
@@ -84,6 +84,14 @@ class Controller_Admin_Users extends Controller_Admin
 			}
 		}
 
+                $this->template->set_global('user_types', Model_User_Type::find('all', array(
+                    'order_by' => array(
+                        array('name', 'asc')
+                    ),
+                )));
+                
+                $this->template->set_global('groups', $this->get_groups());
+                
 		$this->template->title = "Users";
 		$this->template->content = View::forge('admin/users/create');
 
@@ -97,14 +105,14 @@ class Controller_Admin_Users extends Controller_Admin
 		if ($val->run())
 		{
 			$user->username = Input::post('username');
-			$user->password = Input::post('password');
+//			$user->password = Input::post('password');
 			$user->email = Input::post('email');
-			$user->last_login = Input::post('last_login');
-			$user->login_hash = Input::post('login_hash');
+//			$user->last_login = Input::post('last_login');
+//			$user->login_hash = Input::post('login_hash');
 			$user->group = Input::post('group');
-			$user->profile_fields = Input::post('profile_fields');
-			$user->guid = Input::post('guid');
-			$user->shop_guid = Input::post('shop_guid');
+//			$user->profile_fields = Input::post('profile_fields');
+//			$user->guid = Input::post('guid');
+//			$user->shop_guid = Input::post('shop_guid');
 			$user->description = Input::post('description');
 			$user->id_number = Input::post('id_number');
 			$user->employee_number = Input::post('employee_number');
@@ -152,6 +160,14 @@ class Controller_Admin_Users extends Controller_Admin
 
 			$this->template->set_global('user', $user, false);
 		}
+
+                $this->template->set_global('user_types', Model_User_Type::find('all', array(
+                    'order_by' => array(
+                        array('name', 'asc')
+                    ),
+                )));
+                
+                $this->template->set_global('groups', $this->get_groups());
 
 		$this->template->title = "Users";
 		$this->template->content = View::forge('admin/users/edit');

@@ -56,7 +56,6 @@ return array(
 	// TWIG ( http://www.twig-project.org/documentation )
 	// ------------------------------------------------------------------------
 	'View_Twig' => array(
-                'include' => APPPATH.'vendor'.DS.'Twig'.DS.'Autoloader.php',
 		'auto_encode' => true,
 		'views_paths' => array(APPPATH.'views'),
 		'delimiters'  => array(

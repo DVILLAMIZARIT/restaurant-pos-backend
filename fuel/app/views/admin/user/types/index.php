@@ -1,5 +1,5 @@
 <p>
-    <?php echo Html::anchor('admin/user/types/create', 'New User type', array('class' => 'btn btn-success')); ?>
+    <?php echo Html::anchor('admin/user/types/create', 'New Employee Type', array('class' => 'btn btn-success')); ?>
 </p>
 <?php if ($user_types): ?>
 <?php echo $pagination->render(); ?>
@@ -7,7 +7,6 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			<th>Group</th>
                         <th style="width: 150px;"></th>
 		</tr>
 	</thead>
@@ -15,7 +14,6 @@
 <?php foreach ($user_types as $item): ?>		<tr>
 
 			<td><?php echo $item->name; ?></td>
-			<td><?php echo $item->group; ?></td>
 			<td nowrap>
                             <?php echo Html::anchor('admin/user/types/view/'.$item->id, 'View'); ?> | 
                             <?php echo Html::anchor('admin/user/types/edit/'.$item->id, 'Edit'); ?> | 

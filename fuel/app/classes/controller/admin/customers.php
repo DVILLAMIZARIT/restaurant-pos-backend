@@ -16,7 +16,7 @@ class Controller_Admin_Customers extends Controller_Admin
                 $data['pagination'] = $pagination;
                 
 		$this->template->title = "Customers &raquo; Listing";
-		$this->template->content = View::forge('admin/customers/index', $data);
+		$this->template->content = View::forge('admin/customers/index.twig', $data);
 
 	}
 

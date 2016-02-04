@@ -1,5 +1,9 @@
+<p>
+    <?php echo Html::anchor('admin/inventory/units/create', 'New Unit', array('class' => 'btn btn-success')); ?>
+</p>
 <?php if ($inventory_units): ?>
-<table class="table table-striped">
+<?php echo $pagination->render(); ?>
+<table class="table table-striped table-condensed">
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -24,6 +28,4 @@
 <p>No Inventory_units.</p>
 
 <?php endif; ?>
-<p>
-    <?php echo Html::anchor('admin/inventory/units/create', 'Add new Inventory unit', array('class' => 'btn btn-success')); ?>
-</p>
+<p></p>

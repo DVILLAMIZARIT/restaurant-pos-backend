@@ -37,7 +37,7 @@
                     </li>
                     
                     <li class="dropdown" class="<?php echo in_array($segment, array('report', 'report')) ? 'active' : ''; ?>">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-cutlery"></span> My Shop <b class="caret"></b></a>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href=""><span class="glyphicon glyphicon-cutlery"></span> My Shop <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><?php echo Fuel\Core\Html::anchor('admin/sales', 'Sales'); ?></li>
                             <li><?php echo Fuel\Core\Html::anchor('admin/orders', 'Orders'); ?></li>
@@ -55,7 +55,7 @@
                     </li>
                     
                     <li class="dropdown" class="<?php echo in_array($segment, array('inventory', 'inventories')) ? 'active' : ''; ?>">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-barcode"></span> Stock <b class="caret"></b></a>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href=""><span class="glyphicon glyphicon-barcode"></span> Stock <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><?php echo Fuel\Core\Html::anchor('admin/products', 'Products'); ?></li>
                             <li><?php echo Fuel\Core\Html::anchor('admin/inventory', 'Inventory'); ?></li>
@@ -65,7 +65,7 @@
                     </li>
                     
                     <li class="dropdown" class="<?php echo in_array($segment, array('users', 'user')) ? 'active' : ''; ?>">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-user"></span> System Users <b class="caret"></b></a>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href=""><span class="glyphicon glyphicon-user"></span> System Users <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><?php echo Fuel\Core\Html::anchor('admin/users', 'Users'); ?></li>
                             <li><?php echo Fuel\Core\Html::anchor('admin/user/types', 'User Types'); ?></li>
@@ -73,7 +73,7 @@
                     </li>
                     
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-cog"></span> Settings <b class="caret"></b></a>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href=""><span class="glyphicon glyphicon-cog"></span> Settings <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><?php echo Fuel\Core\Html::anchor('admin/currencies', 'Currencies'); ?></li>
                             <li><?php echo Fuel\Core\Html::anchor('admin/inventory/units', 'Units of Measurement'); ?></li>
@@ -83,7 +83,7 @@
                     </li>
                     
                     <li class="dropdown" class="<?php echo in_array($segment, array('reports', 'report')) ? 'active' : ''; ?>">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-file"></span> Reports <b class="caret"></b></a>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href=""><span class="glyphicon glyphicon-file"></span> Reports <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><?php echo Fuel\Core\Html::anchor('admin/reports', 'Reports'); ?></li>
                             <li><?php echo Fuel\Core\Html::anchor('admin/logs', 'Logs'); ?></li>
@@ -93,7 +93,7 @@
 
                 <ul class="nav navbar-nav pull-right">
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $current_user->username ?> <b class="caret"></b></a>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href=""><?php echo $current_user->username ?> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                                 <li><?php echo Html::anchor('admin/logout', 'Logout') ?></li>
                         </ul>

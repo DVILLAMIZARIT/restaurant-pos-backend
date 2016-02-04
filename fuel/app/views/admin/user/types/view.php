@@ -6,7 +6,7 @@
             <span class="pull-right"><?php echo $user_type->name; ?></span>
     </p>
     <p>
-            <strong>Group:</strong>
+            <strong>System Login Rights:</strong>
             <span class="pull-right"><?php echo $user_type->group; ?></span>
     </p>
     

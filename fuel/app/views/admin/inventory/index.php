@@ -1,13 +1,16 @@
-<h2>Listing Inventories</h2>
-<br>
+<p>
+	<?php echo Html::anchor('admin/inventory/create', 'New Inventory', array('class' => 'btn btn-success')); ?>
+
+</p>
+
 <?php if ($inventories): ?>
+<?php echo $pagination->render(); ?>
 <table class="table table-striped">
 	<thead>
 		<tr>
 			<th>Description</th>
 			<th>Barcode</th>
 			<th>Short code</th>
-			<th>Inventory units id</th>
 			<th>Warning level</th>
                         <th style="width: 150px;"></th>
 		</tr>
@@ -18,7 +21,6 @@
 			<td><?php echo $item->description; ?></td>
 			<td><?php echo $item->barcode; ?></td>
 			<td><?php echo $item->short_code; ?></td>
-			<td><?php echo $item->inventory_units_id; ?></td>
 			<td><?php echo $item->warning_level; ?></td>
 			<td nowrap>
 				<?php echo Html::anchor('admin/inventory/view/'.$item->id, 'View'); ?> |
@@ -33,7 +35,5 @@
 <?php else: ?>
 <p>No Inventories.</p>
 
-<?php endif; ?><p>
-	<?php echo Html::anchor('admin/inventory/create', 'Add new Inventory', array('class' => 'btn btn-success')); ?>
-
-</p>
+<?php endif; ?>
+<p></p>

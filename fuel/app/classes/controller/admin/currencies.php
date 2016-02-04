@@ -4,7 +4,19 @@ class Controller_Admin_Currencies extends Controller_Admin
 
 	public function action_index()
 	{
-		$data['currencies'] = Model_Currency::find('all');
+                $config = Fuel\Core\Config::get('pagination');
+                $pagination = Fuel\Core\Pagination::forge('admin.currencies', $config);
+                $pagination->total_items = Model_Customer::count();
+                
+                $data['pagination'] = $pagination;                
+		$data['currencies'] = Model_Currency::find('all', array(
+                    'order_by' => array(
+                        array('country', 'asc')
+                    ),
+                    'limit' => $pagination->per_page,
+                    'offset' => $pagination->offset,
+                ));
+                
 		$this->template->title = "Currencies";
 		$this->template->content = View::forge('admin/currencies/index', $data);
 

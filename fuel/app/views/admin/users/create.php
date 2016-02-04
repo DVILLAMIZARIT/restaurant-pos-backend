@@ -1,7 +1,4 @@
-<h2>New User</h2>
-<br>
-
-<?php echo render('admin/users/_form'); ?>
-
-
-<p><?php echo Html::anchor('admin/users', 'Back'); ?></p>
+<div class="col-md-6">
+    <?php echo render('admin/users/_form'); ?>
+</div>
+<div class="col-md-6"></div>

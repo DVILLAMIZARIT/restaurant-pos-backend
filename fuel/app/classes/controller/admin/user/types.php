@@ -17,7 +17,7 @@ class Controller_Admin_User_Types extends Controller_Admin
                     'limit' => $pagination->per_page,
                 ));
                 
-		$this->template->title = "User Types";
+		$this->template->title = "Employee Types &raquo; Listing";
 		$this->template->content = View::forge('admin/user/types/index', $data);
 
 	}
@@ -71,7 +71,7 @@ class Controller_Admin_User_Types extends Controller_Admin
 		}
 
                 $this->template->set_global('groups', $this->get_groups());
-		$this->template->title = "User Types &raquo; Create";
+		$this->template->title = "Employee Types &raquo; Create";
 		$this->template->content = View::forge('admin/user/types/create');
 
 	}
@@ -114,7 +114,7 @@ class Controller_Admin_User_Types extends Controller_Admin
                     }
 
                     $this->template->set_global('groups', $this->get_groups());
-                    $this->template->title = "User Types &raquo; ".$user_type->name." &raquo; Edit";
+                    $this->template->title = "Employee Types &raquo; ".$user_type->name." &raquo; Edit";
                     $this->template->content = View::forge('admin/user/types/edit');
                 }
                 else

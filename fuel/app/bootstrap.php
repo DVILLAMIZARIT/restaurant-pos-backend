@@ -5,6 +5,7 @@ require COREPATH.'bootstrap.php';
 \Autoloader::add_classes(array(
 	// Add classes you want to override here
 	// Example: 'View' => APPPATH.'classes/view.php',
+//        'Twig_Fuel_Extension' => VENDORPATH.'classes/twig/fuel/extension.php',
 ));
 
 // Register the autoloader

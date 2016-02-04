@@ -17,7 +17,7 @@ class Controller_Admin_Inventory_Units extends Controller_Admin
                     'offset' => $pagination->offset,
                 ));
                 
-		$this->template->title = "Inventory Units";
+		$this->template->title = "Inventory Units &raquo; Listing";
 		$this->template->content = View::forge('admin/inventory/units/index', $data);
 
 	}
@@ -26,7 +26,7 @@ class Controller_Admin_Inventory_Units extends Controller_Admin
 	{
 		if ($inventory_unit = Model_Inventory_Unit::find($id))
                 {
-                    $this->template->title = "Inventory Unit &raquo; ".$inventory_unit->name;
+                    $this->template->title = "Inventory Unit &raquo; ".$inventory_unit->name." &raquo; View";
                     $this->template->content = View::forge('admin/inventory/units/view', array(
                         'inventory_unit' => $inventory_unit,
                     ));

@@ -20,19 +20,22 @@
 
 		</div>
 		<div class="form-group">
-			<?php echo Form::label('Inventory units id', 'inventory_units_id', array('class'=>'control-label')); ?>
+			<?php echo Form::label('Units', 'inventory_units_id', array('class'=>'control-label')); ?>
 
-				<?php echo Form::input('inventory_units_id', Input::post('inventory_units_id', isset($inventory) ? $inventory->inventory_units_id : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Inventory units id')); ?>
-
+				<?php // echo Form::input('inventory_units_id', Input::post('inventory_units_id', isset($inventory) ? $inventory->inventory_units_id : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Inventory units id')); ?>
+                        <?php echo \Fuel\Core\Form::select('inventory_units_id', Input::post('inventory_units_id', isset($inventory) ? $inventory->inventory_units_id : 0), \Fuel\Core\Arr::assoc_to_keyval($inventory_units, 'id', 'name'), array('class' => 'form-control', 'required')); ?>
 		</div>
 		<div class="form-group">
 			<?php echo Form::label('Warning level', 'warning_level', array('class'=>'control-label')); ?>
 
-				<?php echo Form::input('warning_level', Input::post('warning_level', isset($inventory) ? $inventory->warning_level : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Warning level')); ?>
+				<?php echo Form::input('warning_level', Input::post('warning_level', isset($inventory) ? $inventory->warning_level : 0), array('class' => 'col-md-4 form-control', 'placeholder'=>'Warning level')); ?>
 
 		</div>
 		<div class="form-group">
 			<label class='control-label'>&nbsp;</label>
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>		</div>
+                        <?php echo Fuel\Core\Html::anchor('admin/inventory', '&laquo; Inventories', array('class' => 'btn btn-default')); ?>
+                        <?php echo isset($inventory) ? Fuel\Core\Html::anchor('admin/inventory/view/'.$inventory->id, 'View', array('class' => 'btn btn-warning')) : ''; ?>
+			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>		
+                </div>
 	</fieldset>
 <?php echo Form::close(); ?>

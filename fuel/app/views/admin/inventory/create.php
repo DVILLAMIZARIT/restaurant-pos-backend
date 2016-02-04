@@ -1,7 +1,4 @@
-<h2>New Inventory</h2>
-<br>
-
+<div class="col-md-6">
 <?php echo render('admin/inventory/_form'); ?>
-
-
-<p><?php echo Html::anchor('admin/inventory', 'Back'); ?></p>
+</div>
+<div class="col-md-6"></div>

@@ -1,0 +1,35 @@
+<p> {{ html_anchor('admin/customers/create', 'New Customer', {class: 'btn btn-success'}) }} </p>
+
+{% if customers|length > 0 %}
+    {{ pagination.render }}
+    
+        <table class="table table-striped">
+            <thead>
+                    <tr>
+                            <th>Description</th>
+                            <th>Contact person</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th style="width: 150px;"></th>
+                    </tr>
+            </thead>
+            <tbody>
+            {% for item in customers %}		
+                    <tr>
+                            <td>{{ item.description }} </td>
+                            <td> {{ item.contact_person }} </td>
+                            <td> {{ item.phone }} </td>
+                            <td> {{ item.email }} </td>
+                            <td nowrap>
+                                   {{ html_anchor('admin/customers/view/' ~ item.id, 'View') }} |
+                                   {{ html_anchor('admin/customers/edit/' ~ item.id, 'Edit') }} |
+                                   {{ html_anchor('admin/customers/delete/' ~ item.id, 'Delete', { onclick: 'return confirm("Are you sure?")' }) }}
+
+                            </td>
+                    </tr>
+                {% endfor %}	
+        </tbody>
+    </table>    
+{% else %}
+    <p>No Customers.</p>
+{% endif %}
